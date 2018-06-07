@@ -1,6 +1,6 @@
 ## yan-compressor ![NPM version](https://img.shields.io/npm/v/yan-compressor.svg?style=flat)
 
-The compressor based UglifyJS and UglifycCSS
+The compressor based UglifyJS and UglifyCSS
 
 ### Installation
 ```bash
