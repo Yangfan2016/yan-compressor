@@ -1,0 +1,28 @@
+{
+  "name": "yan-compressor",
+  "version": "1.0.0",
+  "description": "The compressor based UglifyJS and UglifyCSS",
+  "main": "src/compress.js",
+  "scripts": {
+    "compress": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yangfan",
+  "license": "ISC",
+  "dependencies": {
+    "uglify-js": "^3.3.28",
+    "uglifycss": "^0.0.29"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "chai": "^4.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yangfan2016/yanjs.git"
+  },
+  "keywords": [
+    "js",
+    "compressor"
+  ]
+}

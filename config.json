@@ -1,0 +1,35 @@
+[
+    {
+        "entry": [
+            "./examples/libs/jquery.js",
+            "./examples/libs/vue.js"
+        ],
+        "output": {
+            "filename": "vendor.min.js",
+            "path": "./compress/js"
+        },
+        "sourceMap":false
+    },
+    {
+        "entry": [
+            "./examples/js/a.js",
+            "./examples/js/b.js"
+        ],
+        "output": {
+            "filename": "app.min.js",
+            "path": "./compress/js"
+        },
+        "sourceMap":true
+    },
+    {
+        "entry": [
+            "./examples/css/a.css",
+            "./examples/css/b.css"
+        ],
+        "output": {
+            "filename": "app.min.css",
+            "path": "./compress/css"
+        },
+        "convertAbsolutePath":true
+    }
+]
