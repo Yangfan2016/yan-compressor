@@ -6,7 +6,7 @@
         ],
         "output": {
             "filename": "vendor.min.js",
-            "path": "./compress/js"
+            "path": "./examples/compress/js"
         },
         "sourceMap":false
     },
@@ -17,7 +17,7 @@
         ],
         "output": {
             "filename": "app.min.js",
-            "path": "./compress/js"
+            "path": "./examples/compress/js"
         },
         "sourceMap":true
     },
@@ -28,7 +28,7 @@
         ],
         "output": {
             "filename": "app.min.css",
-            "path": "./compress/css"
+            "path": "./examples/compress/css"
         },
         "convertAbsolutePath":true
     }

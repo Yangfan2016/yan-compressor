@@ -8,6 +8,8 @@ $ npm install yan-compressor
 ```
 
 ### Example
+Editing this file "config.json" and then run next script
+
 ```bash
 $ npm run compress
 ```
