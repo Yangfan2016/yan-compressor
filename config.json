@@ -8,7 +8,7 @@
             "filename": "vendor.min.js",
             "path": "./examples/compress/js"
         },
-        "sourceMap":false
+        "sourceMap": false
     },
     {
         "entry": [
@@ -19,17 +19,22 @@
             "filename": "app.min.js",
             "path": "./examples/compress/js"
         },
-        "sourceMap":true
+        "sourceMap": true
     },
     {
         "entry": [
-            "./examples/css/a.css",
-            "./examples/css/b.css"
+            "./examples/css/font-awesome.css"
         ],
         "output": {
             "filename": "app.min.css",
             "path": "./examples/compress/css"
         },
-        "convertAbsolutePath":true
+        "convertFontToBase64": {
+            "types": [
+                ".woff2",
+                ".woff"
+            ],
+            "limit": 204800
+        }
     }
 ]
