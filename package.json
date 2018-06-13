@@ -1,6 +1,6 @@
 {
   "name": "yan-compressor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The compressor based UglifyJS and UglifyCSS",
   "main": "src/compress.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "dependencies": {
     "uglify-js": "^3.3.28",
     "uglifycss": "^0.0.29",
-    "mime-types":"^2.1.18"
+    "mime-types": "^2.1.18"
   },
   "devDependencies": {
     "mocha": "^5.2.0",
