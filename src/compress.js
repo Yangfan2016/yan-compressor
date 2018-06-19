@@ -104,7 +104,6 @@ Compress.prototype.minifyCSS = function () {
         var res = UglifyCSS.processFiles(conf.entry,
             {
                 // maxLineLen: 5,
-                // convertUrls:conf.convertAbsolutePath?path.resolve(ROOT_PATH,"./examples"):"",
                 convertUrls: conf.convertRelativePath ? conf.entry[0] : false
                 // output:"js",
                 // expandVars: true
@@ -112,10 +111,15 @@ Compress.prototype.minifyCSS = function () {
                 // cuteComments: true,
             }
         );
+        // 去除多个 @charset "utf-8";
+        let charsetList=res.match(/@charset/g) || [];
+        if (charsetList.length>1) {
+            res=`@charset 'utf-8';${res.replace(/@charset\s+[^;]+;/g,"")}`;
+        }
         // ?转换字体为base64格式
         conf.convertFontToBase64 && (res = convertFont({
             txt: res,
-            cssPath: path.resolve(ROOT_PATH, conf.entry[0]), // BUG 
+            cssPath: path.resolve(ROOT_PATH, conf.entry[0]),
             option: conf.convertFontToBase64
         }));
         // ?转换图片为base64格式 [TODO]
