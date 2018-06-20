@@ -114,7 +114,7 @@ Compress.prototype.minifyCSS = function () {
         // 去除多个 @charset "utf-8";
         let charsetList=res.match(/@charset/g) || [];
         if (charsetList.length>1) {
-            res=`@charset 'utf-8';${res.replace(/@charset\s+[^;]+;/g,"")}`;
+            res=`@charset "utf-8";${res.replace(/@charset\s+[^;]+;/g,"")}`;
         }
         // ?转换字体为base64格式
         conf.convertFontToBase64 && (res = convertFont({
