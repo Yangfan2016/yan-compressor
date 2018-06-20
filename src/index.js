@@ -3,4 +3,4 @@ const config = require("../config.json");
 
 new Compress(config)
     .minifyCSS()
-    // .compressJS();
+    .compressJS();

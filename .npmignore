@@ -4,9 +4,9 @@ logs
 **/*.backup.*
 **/*.back.*
 
-node_modules
+node_modules/
 bower_componets
-.vscode
+.vscode/
 
 *.sublime*
 
