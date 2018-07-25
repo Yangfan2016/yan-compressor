@@ -1,10 +1,10 @@
 {
   "name": "yan-compressor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The compressor based UglifyJS and UglifyCSS",
   "main": "src/compress.js",
-  "bin":{
-    "compress":"./bin/compress"
+  "bin": {
+    "compress": "./bin/compress"
   },
   "scripts": {
     "compress": "node src/index.js",
