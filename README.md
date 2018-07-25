@@ -42,7 +42,7 @@ First,edit file "config.json"
 Then execute the following command
 
 ```bash
-$ npm run compress
+$ compress
 ```
 
 ### Contributing
