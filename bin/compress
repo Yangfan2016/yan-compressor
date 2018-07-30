@@ -1,3 +1,12 @@
 #!/usr/bin/env node
+var path = require("path");
+var Compress = require("../src/compress.js");
 
-require("../src/index.js");
+var ROOT_PATH = process.env.PWD;
+var args = process.argv.slice(2);
+
+var config = require(`${ROOT_PATH}/config.json`);
+
+var cp = new Compress(ROOT_PATH, config);
+cp.compressJS()
+    .minifyCSS();

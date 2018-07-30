@@ -1,0 +1,42 @@
+[
+    {
+        "entry": [
+            "./examples/libs/jquery.js",
+            "./examples/libs/vue.js"
+        ],
+        "output": {
+            "filename": "vendor.min.js",
+            "path": "./examples/compress/js"
+        },
+        "sourceMap": false
+    },
+    {
+        "entry": [
+            "./examples/js/a.js",
+            "./examples/js/b.js"
+        ],
+        "output": {
+            "filename": "app.min.js",
+            "path": "./examples/compress/js"
+        },
+        "sourceMap": true
+    },
+    {
+        "entry": [
+            "./examples/css/font-awesome.css",
+            "./examples/css/a.css",
+            "./examples/css/b.css"
+        ],
+        "output": {
+            "filename": "app.min.css",
+            "path": "./examples/compress/css"
+        },
+        "convertFontToBase64": {
+            "types": [
+                ".ttf",
+                ".eot"
+            ],
+            "limit": 204800
+        }
+    }
+]
