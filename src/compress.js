@@ -7,26 +7,11 @@ const UglifyJS = require("uglify-js");
 const UglifyCSS = require("uglifycss");
 const { convertFont } = require("./convertbase64.js");
 
-const ROOT_PATH = path.resolve(__dirname, "../");
+var ROOT_PATH = "";
 
-let defaultCSSOption = {
-    "entry": [
-        "./examples/css/font-awesome.css"
-    ],
-    "output": {
-        "filename": "app.min.css",
-        "path": "./examples/compress/css"
-    },
-    "convertRelativePath": true,
-    "convertFontToBase64": false,
-    // "convertFontToBase64": {
-    //     "types": [".woff2", ".woff"],
-    //     "limit": 204800
-    // }
-};
-
-function Compress(option) {
+function Compress(root,option) {
     console.log("----------初始化------------");
+    ROOT_PATH=root;
     this.opt = option;
     this.cssOpt = [];
     this.jsOpt = [];
