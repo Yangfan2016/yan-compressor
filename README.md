@@ -42,7 +42,9 @@ First,edit file "config.json"
 Then execute the following command
 
 ```bash
-$ compress
+compress # default
+compress -css # only css
+compress -js # only js
 ```
 
 ### Contributing
