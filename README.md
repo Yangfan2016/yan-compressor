@@ -11,7 +11,7 @@ $ npm install yan-compressor
 
 First, create the file "json" in the root directory
 
-```json
+```js
 [
     // The config of js
     {
