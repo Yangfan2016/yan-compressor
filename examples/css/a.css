@@ -1,8 +1,8 @@
+@charset "UTF-8";
 @charset "utf-8";
-@charset "utf-8";
-@import "./font-awesome.css";
-/* a.css */
+/* @import "./font-awesome.css"; */
 ul.box>li{
     color:#ccc;
     background-image:url(../images/0.png);
+    background-size: contain;
 }

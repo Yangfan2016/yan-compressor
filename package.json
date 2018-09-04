@@ -12,14 +12,14 @@
   },
   "author": "Yangfan",
   "license": "ISC",
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "chai": "^4.1.2"
+  },
   "dependencies": {
     "uglify-js": "^3.3.28",
     "uglifycss": "^0.0.29",
     "mime-types": "^2.1.18"
-  },
-  "devDependencies": {
-    "mocha": "^5.2.0",
-    "chai": "^4.1.2"
   },
   "repository": {
     "type": "git",

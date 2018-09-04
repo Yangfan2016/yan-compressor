@@ -41,7 +41,7 @@ module.exports = {
             }
             var fontData = fs.readFileSync(fontPath);
             // 转成base64
-            fontData = new Buffer(fontData).toString('base64');
+            fontData = new Buffer.from(fontData).toString('base64');
             // 返回替换
             return `url('data:${mineType.lookup(fontPath)};base64,${fontData}')`;
         });

@@ -1,12 +1,32 @@
 #!/usr/bin/env node
 var path = require("path");
-var Compress = require("../src/compress.js");
+var fs = require("fs");
+var Compress = require("./src/compress.js");
 
 var ROOT_PATH = process.env.PWD;
 var args = process.argv.slice(2);
 
-var config = require(`${ROOT_PATH}/config.json`);
+const CONFIG_PATH = `${ROOT_PATH}/config.json`;
+fs.readFile(CONFIG_PATH, 'utf-8', function (err, data) {
+    if (!err) {
+        var config = JSON.parse(data);
+        var cp = new Compress(ROOT_PATH, config);
 
-var cp = new Compress(ROOT_PATH, config);
-cp.compressJS()
-    .minifyCSS();
+        switch (args[0]) {
+            case "-css":
+                cp.minifyCSS();
+                break;
+            case "-js":
+                cp.compressJS();
+                break;
+            default:
+                cp.compressJS()
+                    .minifyCSS();
+                break;
+        }
+    } else {
+        console.log("Read file is failed");
+    }
+});
+
+

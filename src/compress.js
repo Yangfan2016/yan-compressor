@@ -1,17 +1,17 @@
 const fs = require("fs");
 const path = require("path");
-
-module.paths.push(path.resolve(__dirname, '../node_modules'));
-
 const UglifyJS = require("uglify-js");
 const UglifyCSS = require("uglifycss");
 const { convertFont } = require("./convertbase64.js");
+const copy=require("./copy.js");
 
-var ROOT_PATH = "";
-
-function Compress(root,option) {
+function Compress(root, option) {
+    if (!Array.isArray(option)) {
+        console.log("config must is a 'array' type");
+        return;
+    }
     console.log("----------初始化------------");
-    ROOT_PATH=root;
+    this.ROOT = root;
     this.opt = option;
     this.cssOpt = [];
     this.jsOpt = [];
@@ -29,6 +29,7 @@ Compress.prototype.initFolder = function () {
     return this;
 };
 Compress.prototype.mkdirOfOutput = function (output) {
+    let ROOT_PATH=this.ROOT;
     let outputPath = path.resolve(ROOT_PATH, output);
     // 创建输出路径
     !fs.existsSync(outputPath)
@@ -44,9 +45,11 @@ Compress.prototype.mkdirOfOutput = function (output) {
         : 0;
 };
 Compress.prototype.compressJS = function () {
-    let len=this.jsOpt.length;
+    let ROOT_PATH=this.ROOT;
+    let len = this.jsOpt.length;
+    if (len < 1) return this;
     this.jsOpt.forEach(function (conf, index) {
-        console.log(`----------JS 压缩中 ${+1+index}/${len}------------`);
+        console.log(`----------JS 压缩中 ${+1 + index}/${len}------------`);
         // 创建输出路径
         this.mkdirOfOutput(conf.output.path);
         // 压缩混淆
@@ -75,14 +78,18 @@ Compress.prototype.compressJS = function () {
     return this;
 };
 Compress.prototype.minifyCSS = function () {
-    let len=this.cssOpt.length;
+    let ROOT_PATH=this.ROOT;
+    let len = this.cssOpt.length;
+    let isCopyFonts=false;
+    if (len < 1) return this;
     this.cssOpt.forEach(function (conf, index) {
-        console.log(`----------CSS 压缩中 ${+1+index}/${len}------------`);
+        console.log(`----------CSS 压缩中 ${+1 + index}/${len}------------`);
         // conf=Object.assign(JSON.parse(JSON.stringify(defaultCSSOption)),conf);
         // 创建输出路径
         this.mkdirOfOutput(conf.output.path);
         // 必须是相对路径，才能够转base64
-        if (typeof conf.convertFontToBase64==="object") {
+        if (typeof conf.convertFontToBase64 === "object") {
+            isCopyFonts=true;
             conf.convertRelativePath = false;
         }
         // 压缩
@@ -97,9 +104,10 @@ Compress.prototype.minifyCSS = function () {
             }
         );
         // 去除多个 @charset "utf-8";
-        let charsetList=res.match(/@charset/g) || [];
-        if (charsetList.length>1) {
-            res=`@charset "utf-8";${res.replace(/@charset\s+[^;]+;/g,"")}`;
+        let reg=/@charset .*?;/gi;
+        let charsetList = res.match(reg) || [];
+        if (charsetList.length >= 1) {
+            res = `@charset "utf-8";${res.replace(reg, "")}`;
         }
         // ?转换字体为base64格式
         conf.convertFontToBase64 && (res = convertFont({
@@ -113,6 +121,16 @@ Compress.prototype.minifyCSS = function () {
         fs.writeFileSync(`${path.resolve(ROOT_PATH, conf.output.path)}/${conf.output.filename}`, res, "utf-8");
     }, this);
     console.log("----------CSS 压缩完成------------");
+
+
+    let publicDir=path.parse(this.cssOpt[0].output.path).dir;
+
+    if (isCopyFonts) {
+        copy(path.resolve(ROOT_PATH,'./fonts'),path.resolve(ROOT_PATH,publicDir));
+        console.log("----------字体文件拷贝成功----------");
+    }
+    copy(path.resolve(ROOT_PATH,'./images'),path.resolve(ROOT_PATH,publicDir));
+    console.log("----------图片文件拷贝成功----------");
     return this;
 };
 
