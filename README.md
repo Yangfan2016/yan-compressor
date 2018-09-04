@@ -4,7 +4,7 @@ The compressor based UglifyJS and UglifyCSS
 
 ### Installation
 ```bash
-$ npm install yan-compressor
+cnpm install yan-compressor
 ```
 
 ### API
