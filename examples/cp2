@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var path = require("path");
 var fs = require("fs");
-var Compress = require("../src/compress.js");
+var Compress = require("./src/compress.js");
 
 var ROOT_PATH = process.env.PWD;
 var args = process.argv.slice(2);

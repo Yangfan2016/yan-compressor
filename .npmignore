@@ -4,15 +4,11 @@ logs
 **/*.backup.*
 **/*.back.*
 
-node_modules/
+node_modules
 bower_componets
-.vscode/
 
 *.sublime*
 
 psd
 thumb
 sketch
-
-examples/
-f2e/
