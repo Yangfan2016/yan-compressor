@@ -9,6 +9,42 @@ $ npm install yan-compressor
 
 ### API
 
+First, create the file "json" in the root directory
+
+```json
+[
+    // The config of js
+    {
+        "entry": [ // entry :string[]
+            "./examples/libs/jquery.js",
+            "./examples/libs/vue.js"
+        ],
+        "output": {
+            "filename": "vendor.min.js",
+            "path": "./examples/compress/js"
+        },
+        "sourceMap": true // make map file of js
+    },
+    // The config of CSS
+    {
+        "entry": [ // entry :string[]
+            "./examples/css/font-awesome.css"
+        ],
+        "output": {
+            "filename": "app.min.css",
+            "path": "./examples/compress/css"
+        },
+        "convertRelativePath": true, // convert to relative url for source css
+        "convertFontToBase64": { // convert font|image to base64 
+            "types": [".woff2", ".woff"],
+            "limit": 204800
+        }
+    }
+]
+```
+
+Then execute the following command
+
 ```bash
 $ compress
 ```
