@@ -52,11 +52,11 @@ $ compress
 If you just want to compress part of files, execute the following command
 
 ```bash
-$ compress-css
+$ compress -css
 ```
 
 ```bash
-$ compress-js
+$ compress -js
 ```
 
 ### Contributing
